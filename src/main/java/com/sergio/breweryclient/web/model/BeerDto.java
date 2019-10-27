@@ -1,5 +1,6 @@
 package com.sergio.breweryclient.web.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,6 +11,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 import javax.validation.constraints.Positive;
+import java.math.BigDecimal;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 
@@ -31,4 +34,10 @@ public class BeerDto {
 
     @Positive
     private Long upc;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
+    private BigDecimal price;
+
+    @JsonFormat(pattern = "yyyy-MM-dd", shape = JsonFormat.Shape.STRING)
+    private OffsetDateTime creationDate;
 }
